@@ -3,7 +3,7 @@ project:
   output-dir: "."
 
 website:
-  title: "YOUR NAME"
+  title: "Morg Hope"
   navbar:
     pinned: true
     left:
@@ -13,13 +13,13 @@ website:
         href: blog-listing.qmd
             
   page-footer: 
-    center: "Powered with GitHub and Quarto<br>© YOUR NAME, 2023"
+    center: "Powered with GitHub and Quarto<br>© Morg Hope, 2024"
 
 format:
   html:
     theme: 
       light: flatly
-      dark: darkly
+      dark: minty
     mainfont: system-ui; 
     highlight-style: atom-one
     css: styles.css
