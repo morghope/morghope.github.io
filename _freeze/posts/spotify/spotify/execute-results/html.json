@@ -1,7 +1,7 @@
 {
-  "hash": "3e980c1c5558d5c18763ab6f8767cc13",
+  "hash": "d78ed584ae0d9c115a33b4e003b4da9a",
   "result": {
-    "markdown": "---\ntitle: \"Spotify\"\nauthor: \"Your Name\"\ndate: \"2023-10-30\"\ncategories: [spotify, code, analysis]\n# image: \"stotify.png\"\n\nexecute: \n  warning: false\n  message: false\n  \ntoc: true\n---\n\n\n\n\nLet's analyze the `spotify` data:\n",
+    "markdown": "---\ntitle: \"Spotify\"\nauthor: \"Morgan Bush\"\ndate: \"2024- 5-7\"\ncategories: [spotify, code, analysis]\n# image: \"stotify.png\"\n\nexecute: \n  warning: false\n  message: false\n  \ntoc: true\n---\n\n\n\n\nLet's analyze the `spotify` data:\n",
     "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"

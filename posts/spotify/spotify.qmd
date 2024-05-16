@@ -1,7 +1,7 @@
 ---
 title: "Spotify"
-author: "Your Name"
-date: "2023-10-30"
+author: "Morgan Bush"
+date: "2024- 5-7"
 categories: [spotify, code, analysis]
 # image: "stotify.png"
 
