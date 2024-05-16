@@ -1,12 +1,8 @@
 ---
-title: DANL Project
-subtitle: "Data-Driven Mastery: Unlocking Business Potential"
+title: Beer Market Project
+subtitle: "Beer Market Project: What is the most common beer brand based on buyertype and degree"
 author: 
-  - Name 1
-  - Name 2
-  - Name 3
-  - Name 4
-  - Name 5
+  - Morgan Bush
 
 toc: true
 toc-title: "Table of Contents"
@@ -50,43 +46,113 @@ theme_set(theme_ipsum()+
 About this project :clap:
 
 ```{r}
-1 + 1
+beer_markets <- read_csv("https://bcdanl.github.io/data/beer_markets_all.csv")
 ```
 
 
 # Data
 
-The data.frame `mpg` contains a subset of the fuel economy data that the EPA makes available on [https://fueleconomy.gov/](https://fueleconomy.gov/). It contains only models which had a new release every year between 1999 and 2008 - this was used as a proxy for the popularity of the car. :oncoming_automobile:
+This is data.frame beer_market contains a sbset of beer data.
 
 
 ## Summary Statistics
 
-```{r}
-mpg <- ggplot2::mpg
-```
 
 ```{r}
 #| results: asis
 #| echo: false
-rmarkdown::paged_table(mpg) 
+rmarkdown::paged_table(beer_markets) 
 ```
 
 
 ```{r}
-skim(mpg) %>% 
+skim(beer_markets) %>% 
   select(-n_missing)
 ```
 
 
-## MPG and a Type of Cars
-The following boxplot shows how the distribution of highway MPG (`hwy`) varies by a type of cars (`class`) :blue_car: :truck: :minibus:.
+
+```{r}
+
+brandchoice <- beer_markets |>
+  count(brand)
+ggplot(data=beer_markets) +
+  geom_bar(mapping =aes(y =brand, fill= buyertype))
+
+```
+
+In this bar chart we can see the relationship between the number of males, females, or married by of the brands including Natural Light, Miller Light, Coors Light, Busch Light, or Bud light. In the chart we can see the most popular brand for married to purchase is Bud Light. The brand that is least purchased for females is Busch Light. 
+
+```{r}
+brand_buyertype <- beer_markets |>
+  count(brand, buyertype)
+
+rmarkdown::paged_table(brand_buyertype) 
+
+```
+
+```{r}
+brand_degree <- beer_markets |>
+  count(brand, buyertype, degree)
+
+rmarkdown::paged_table(brand_degree) 
+
+
+ggplot(brand_degree,
+       aes(x=n, y=brand, fill = buyertype))+
+  geom_col(position = "dodge") +
+  facet_wrap(degree ~ .)
+```
+
+In this chart we are looking out the relationship between brand, buyertype, and degree based on the number of buyers for each buyertype. As we look at this chart we can see the most Bud Light is purchased by married in HS. 
 
 
 ```{r}
-ggplot(data = mpg) +
-  geom_boxplot(aes(x = class, y = hwy, fill = class),
-               show.legend = F) +
-  labs(x = "Class", y = "Highway\nMPG") 
+ggplot(brand_degree,
+       aes(x=n, y=brand, fill = buyertype))+
+  geom_col(position = "fill") +
+  facet_wrap(degree ~ .)
 ```
+
+In this chart we are also looking at the relationship between brand, buyertype and degree. The difference between the one previous is that this is measured by percentage out of 1.00. The most popular brand in college for married is Busch Light. The least popular brand in none(no degree) for married is Busch Light.
+
+```{r}
+beer_state <- 
+  beer_markets %>% 
+  count(state) %>% 
+  arrange(-n)
+rmarkdown::paged_table(beer_state) 
+
+
+beer_state
+```
+
+```{r}
+#| fig-height: 25
+brand_state <- beer_markets |>
+  count(brand, state, buyertype)
+ggplot(brand_state,
+       aes(x=n, y=brand, fill = buyertype))+
+  geom_col(position = "dodge") +
+  facet_wrap(state ~ ., ncol = 3)
+
+```
+In this chart 
+
+```{r}
+#| fig-height: 25
+#| 
+ggplot(brand_state,
+       aes(x=n, y=brand, fill = buyertype))+
+  geom_col(position = "fill") +
+  facet_wrap(state ~ ., ncol = 3)
+
+```
+
+On this chart we are looking at the percentages of buyer types based on the brand and the state they buy in. In New York the highest percentage of females buy Natural Light Beer compared to the lowest percentage of females buy Coors Light Beer.  
+
+
+
+
 
 

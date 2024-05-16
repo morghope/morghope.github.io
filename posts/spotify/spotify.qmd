@@ -1,9 +1,9 @@
 ---
-title: "Spotify"
-author: "Morgan Bush"
-date: "2024- 5-7"
+title: Spotify
+author: Morgan Bush
+date: "2024-05-07"
 categories: [spotify, code, analysis]
-# image: "stotify.png"
+# image: "spotify.png"
 
 execute: 
   warning: false
@@ -34,3 +34,18 @@ theme_set(theme_ipsum()+
 ```
 
 Let's analyze the `spotify` data:
+```{r}
+spotify_all <- read.csv('http://bcdanl.github.io/data/spotify_all.csv')
+```
+
+```{r}
+rmarkdown::paged_table(spotify_all) 
+```
+```{r}
+songs <- spotify_all |>
+  count(playlist_name)
+
+```
+
+
+

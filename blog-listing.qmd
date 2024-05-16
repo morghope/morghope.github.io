@@ -9,7 +9,7 @@ listing:
   categories: true
   sort-ui: true
   filter-ui: true
-  fields: [image, date, title, author, reading-time]
+  fields: [image, 05-14-2024 , title, Morgan Bush, reading-time]
 
 page-layout: full
 ---
