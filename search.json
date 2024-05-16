@@ -109,6 +109,6 @@
     "href": "posts/spotify/spotify.html",
     "title": "Spotify",
     "section": "",
-    "text": "Let’s analyze the spotify data:\n\nspotify_all &lt;- read.csv('http://bcdanl.github.io/data/spotify_all.csv')\n\n\nrmarkdown::paged_table(spotify_all) \n\n\n\n  \n\n\n\n\nsongs &lt;- spotify_all |&gt;\n  count(playlist_name)"
+    "text": "Let’s analyze the spotify data:\n\nspotify_all &lt;- read.csv('http://bcdanl.github.io/data/spotify_all.csv')\n\n\nrmarkdown::paged_table(spotify_all) \n\n\n\n  \n\n\n\n\nspotify_all |&gt;\n  group_by(playlist_name) |&gt; \n  summarize(n = n()) |&gt;\n  arrange(-n)\n\n# A tibble: 2,184 × 2\n   playlist_name     n\n   &lt;chr&gt;         &lt;int&gt;\n 1 Country        3530\n 2 Rock           1556\n 3 Chill          1296\n 4 country        1180\n 5 Rap            1168\n 6 Oldies         1038\n 7 Party          1037\n 8 2016            925\n 9 feels           843\n10 rap             786\n# ℹ 2,174 more rows"
   }
 ]

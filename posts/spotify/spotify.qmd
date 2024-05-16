@@ -42,9 +42,11 @@ spotify_all <- read.csv('http://bcdanl.github.io/data/spotify_all.csv')
 rmarkdown::paged_table(spotify_all) 
 ```
 ```{r}
-songs <- spotify_all |>
-  count(playlist_name)
-
+spotify_all |>
+  group_by(playlist_name) |> 
+  summarize(n = n()) |>
+  arrange(-n)
+    
 ```
 
 
