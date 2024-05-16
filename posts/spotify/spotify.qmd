@@ -48,6 +48,6 @@ spotify_all |>
   arrange(-n)
     
 ```
-
+This is arranged by genre for the playlist name and it counts the number of songs in each genre. 
 
 
