@@ -3,7 +3,7 @@ title: Spotify
 author: Morgan Bush
 date: "2024-05-07"
 categories: [spotify, code, analysis]
-# image: "spotify.png"
+ image: img/spotify.png
 
 execute: 
   warning: false
