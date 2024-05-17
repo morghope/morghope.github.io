@@ -51,3 +51,60 @@ spotify_all |>
 This is arranged by genre for the playlist name and it counts the number of songs in each genre. 
 
 
+
+```{r}
+
+library(dplyr)
+
+
+song_popularity <- spotify_all %>%
+  group_by(artist_name, track_name) %>%
+  summarise(count = n(), .groups = 'drop') %>%
+  arrange(desc(count))
+
+
+top_10_songs <- song_popularity %>%
+  top_n(10, count)
+
+
+print(top_10_songs)
+
+
+top_10_artists <- top_10_songs %>%
+  select(artist_name, track_name)
+
+
+print(top_10_artists)
+```
+The most popular song on spotify is "One Dance" by Drake. The 8th popular song is XO TOUR LIFE by Lil Uzi Vert.
+
+```{r}
+library(dplyr)
+
+
+artist_popularity <- spotify_all %>%
+  group_by(artist_name) %>%
+  summarise(count = n(), .groups = 'drop') %>%
+  arrange(desc(count))
+
+
+top_5_artists <- artist_popularity %>%
+  top_n(5, count)
+
+
+print(top_5_artists)
+
+
+top_5_artists_songs <- spotify_all %>%
+  filter(artist_name %in% top_5_artists$artist_name) %>%
+  group_by(artist_name, track_name) %>%
+  summarise(count = n(), .groups = 'drop') %>%
+  arrange(artist_name, desc(count)) %>%
+  group_by(artist_name) %>%
+  slice(1) %>%
+  ungroup()
+
+
+print(top_5_artists_songs)
+```
+These are the five most popular artist and the most popular song for Drake is "one Dance". 
